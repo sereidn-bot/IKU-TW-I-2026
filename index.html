@@ -50,21 +50,6 @@ html, body {
 }
 .topbar-name { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.9); }
 .topbar-sub  { font-size: 11px; color: rgba(255,255,255,.45); }
-.view-tabs {
-  display: flex; gap: 2px; background: var(--gray-0);
-  border-bottom: 1px solid var(--gray-2); padding: 8px 20px 0;
-  flex-shrink: 0;
-}
-.view-tab {
-  font-family: 'Outfit', sans-serif; font-size: 12.5px; font-weight: 600;
-  color: var(--gray-5); background: transparent; border: none;
-  padding: 9px 16px; border-radius: 8px 8px 0 0; cursor: pointer;
-  border-bottom: 2.5px solid transparent; transition: color .15s, background .15s;
-}
-.view-tab:hover { background: var(--green-light); color: var(--green-dark); }
-.view-tab.active { color: var(--green-dark); border-bottom-color: var(--green-dark); background: var(--green-light); }
-.view { display: none; flex-direction: column; }
-.view.active { display: flex; }
 .sasaran-label {
   font-size: 9.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px;
   color: var(--green-main); padding: 12px 8px 4px; border-top: 1px solid var(--gray-2); margin-top: 4px;
@@ -82,7 +67,7 @@ html, body {
 .delta-down { color: #b91c1c; }
 .delta-flat { color: var(--gray-5); }
 .source-bar {
-  background: var(--green-light); border-bottom: 1px solid var(--gray-2);
+  background: var(--green-light); border-top: 1px solid var(--gray-2);
   padding: 8px 20px; font-size: 11.5px; color: var(--gray-5); font-weight: 600;
   display: flex; align-items: center; gap: 16px; flex-wrap: wrap; flex-shrink: 0;
 }
@@ -92,50 +77,6 @@ html, body {
   border: 1px solid var(--gray-2); transition: background .15s, border-color .15s;
 }
 .source-bar a:hover { background: var(--yellow); border-color: var(--yellow); }
-.history-btn {
-  font-family: 'Outfit', sans-serif; font-size: 11.5px; font-weight: 600;
-  color: rgba(255,255,255,.85); background: rgba(255,255,255,.1);
-  border: 1px solid rgba(255,255,255,.18); border-radius: 20px;
-  padding: 5px 12px; cursor: pointer; transition: background .15s;
-}
-.history-btn:hover { background: rgba(255,255,255,.2); }
-.history-modal {
-  position: fixed; inset: 0; z-index: 999; display: none;
-  align-items: center; justify-content: center; padding: 20px;
-  background: rgba(26,35,26,.55); backdrop-filter: blur(3px);
-}
-.history-modal.open { display: flex; }
-.history-box {
-  background: var(--gray-0); border-radius: 16px; max-width: 480px; width: 100%;
-  max-height: 84vh; overflow-y: auto; padding: 26px 26px 20px; position: relative;
-  box-shadow: 0 30px 60px -20px rgba(11,61,34,.4);
-}
-.history-close {
-  position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; border: none;
-  background: var(--gray-2); border-radius: 50%; cursor: pointer; font-size: 17px;
-  color: var(--green-dark); line-height: 1; display: flex; align-items: center; justify-content: center;
-}
-.history-title { font-size: 17px; font-weight: 700; color: var(--green-dark); margin-bottom: 4px; }
-.history-sub { font-size: 12px; color: var(--gray-4); margin-bottom: 20px; }
-.history-timeline { position: relative; padding-left: 22px; border-left: 2px solid var(--gray-2); }
-.history-item { position: relative; margin-bottom: 20px; }
-.history-item:last-child { margin-bottom: 0; }
-.history-dot {
-  position: absolute; left: -27.5px; top: 3px; width: 11px; height: 11px;
-  border-radius: 50%; background: var(--green-main); border: 2px solid var(--gray-0);
-  box-shadow: 0 0 0 2px var(--green-main);
-}
-.history-tag {
-  display: inline-block; font-size: 9.5px; font-weight: 800; text-transform: uppercase;
-  letter-spacing: 1px; color: var(--green-dark); background: var(--green-light);
-  padding: 2px 9px; border-radius: 20px; margin-bottom: 5px;
-}
-.history-desc { font-size: 12.5px; color: var(--text); line-height: 1.55; }
-.history-desc b { color: var(--green-dark); }
-.history-footnote {
-  margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--gray-2);
-  font-size: 10.5px; color: var(--gray-4); text-align: right; font-style: italic;
-}
 .mobile-select-wrap {
   display: none;
   background: var(--gray-0);
@@ -237,11 +178,6 @@ html, body {
 .chart-head h3 { font-size: 13px; font-weight: 600; }
 .legend { display: flex; gap: 14px; }
 .leg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--gray-5); font-weight: 500; }
-.leg-line { width: 16px; height: 2.5px; border-radius: 2px; background: var(--blue); }
-.leg-dash {
-  width: 16px; height: 2.5px;
-  background: repeating-linear-gradient(to right, var(--orange) 0, var(--orange) 4px, transparent 4px, transparent 7px);
-}
 .leg-box { width: 12px; height: 12px; border-radius: 3px; background: var(--blue); }
 .leg-box-o { width: 12px; height: 12px; border-radius: 3px; background: var(--orange); }
 .chart-wrap { position: relative; height: 240px; }
@@ -289,29 +225,6 @@ td { padding: 10px 14px; font-size: 13px; }
   .chart-wrap { height: 200px; }
   .chart-head h3 { font-size: 12px; }
 }
-
-.view-tabs a.view-tab { text-decoration: none; display: inline-block; }
-.hub-wrap { flex: 1; overflow-y: auto; padding: 40px 24px; display: flex; justify-content: center; }
-.hub-inner { max-width: 920px; width: 100%; }
-.hub-title { font-size: 24px; font-weight: 700; color: var(--green-dark); margin-bottom: 6px; }
-.hub-sub { font-size: 13.5px; color: var(--gray-5); margin-bottom: 28px; line-height: 1.6; max-width: 640px; }
-.hub-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.hub-card {
-  background: var(--gray-0); border: 1px solid var(--gray-2); border-radius: 14px;
-  padding: 20px; display: flex; flex-direction: column; gap: 10px;
-  border-top: 3px solid var(--green-main); text-decoration: none; color: var(--text);
-  transition: box-shadow .15s, transform .15s;
-}
-.hub-card:hover { box-shadow: 0 12px 28px -12px rgba(30,77,43,.25); transform: translateY(-2px); }
-.hub-card-tag { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: var(--green-main); }
-.hub-card-title { font-size: 16.5px; font-weight: 700; color: var(--green-dark); }
-.hub-card-desc { font-size: 12.5px; color: var(--gray-5); line-height: 1.55; flex: 1; }
-.hub-card-cta { font-size: 12px; font-weight: 700; color: var(--green-dark); display: flex; align-items: center; gap: 4px; }
-@media (max-width: 640px) {
-  .hub-grid { grid-template-columns: 1fr; }
-  .hub-wrap { padding: 24px 14px; }
-}
-
 </style>
 </head>
 <body>
@@ -321,15 +234,10 @@ td { padding: 10px 14px; font-size: 13px; }
     <span class="topbar-name">Dashboard Capaian IKU &mdash; TW I 2026</span>
   </div>
   <div style="display:flex; align-items:center; gap:14px;">
-    <button class="history-btn" onclick="openHistory()">&#128337; Riwayat</button>
     <div class="topbar-sub">Ditrenbang &middot; Universitas Andalas</div>
   </div>
 </div>
 
-<div class="source-bar">
-  Sumber data:
-  <a href="sumber/Capai_tw_1_2026_SPEKTA.pdf" target="_blank" rel="noopener">&#128196; Laporan Kinerja TW I 2026 (PDF)</a>
-</div>
 <div class="mobile-select-wrap">
   <select class="mobile-select" id="mobile-select-tw1" onchange="selectQuarter('tw1', this.value)">
   </select>
@@ -343,59 +251,10 @@ td { padding: 10px 14px; font-size: 13px; }
   <main class="main" id="main-tw1"></main>
 </div>
 
-<div class="history-modal" id="historyModal">
-  <div class="history-box">
-    <button class="history-close" onclick="closeHistory()" aria-label="Tutup">&times;</button>
-    <h2 class="history-title">Riwayat Perkembangan Dashboard</h2>
-    <p class="history-sub">Catatan perubahan dashboard ini dari waktu ke waktu.</p>
-    <div class="history-timeline">
-      <div class="history-item">
-        <div class="history-dot"></div>
-        <div class="history-content">
-          <div class="history-tag">Versi Awal</div>
-          <div class="history-desc">Data <b>Capaian IKU 2021&ndash;2025</b> hanya tersedia sebagai <b>link download dokumen PDF</b>, belum dalam bentuk dashboard interaktif.</div>
-        </div>
-      </div>
-      <div class="history-item">
-        <div class="history-dot"></div>
-        <div class="history-content">
-          <div class="history-tag">Penambahan</div>
-          <div class="history-desc">Dokumen PDF tersebut diubah menjadi <b>dashboard interaktif Capaian IKU 2021&ndash;2025</b> (8 indikator, format Kepmendikbudristek) dengan grafik, tabel, dan navigasi per indikator.</div>
-        </div>
-      </div>
-      <div class="history-item">
-        <div class="history-dot"></div>
-        <div class="history-content">
-          <div class="history-tag">Penambahan</div>
-          <div class="history-desc">Ditambahkan tab baru <b>Indikator Kinerja 2026</b> berisi 16 indikator dari format Ditjen Dikti (Sasaran S1&ndash;S4), dengan data Triwulan I dan Triwulan II 2026, terpisah dari 8 IKU lama karena definisi indikatornya berbeda.</div>
-        </div>
-      </div>
-      <div class="history-item">
-        <div class="history-dot"></div>
-        <div class="history-content">
-          <div class="history-tag">Penambahan</div>
-          <div class="history-desc">Ditambahkan tautan <b>sumber data</b> pada tab Indikator Kinerja 2026, mengarah ke dokumen resmi Laporan Kinerja Triwulan I dan Triwulan II 2026.</div>
-        </div>
-      </div>
-      <div class="history-item">
-        <div class="history-dot"></div>
-        <div class="history-content">
-          <div class="history-tag">Penambahan</div>
-          <div class="history-desc">Dashboard dipecah menjadi <b>5 halaman terpisah</b>: Beranda, IKU 2026 (keseluruhan), TW I 2026, TW II 2026, dan IKU 2021&ndash;2025, agar tiap bagian bisa dibuka/di-share sebagai halaman sendiri.</div>
-        </div>
-      </div>
-    </div>
-    <p class="history-footnote">Diperbarui oleh: Mutia Rahmi, September 2026</p>
-  </div>
+<div class="source-bar">
+  Sumber data:
+  <a href="sumber/Capai_tw_1_2026_SPEKTA.pdf" target="_blank" rel="noopener">&#128196; Laporan Kinerja TW I 2026 (PDF)</a>
 </div>
-<script>
-function openHistory(){ document.getElementById('historyModal').classList.add('open'); }
-function closeHistory(){ document.getElementById('historyModal').classList.remove('open'); }
-document.getElementById('historyModal').addEventListener('click', function(e){
-  if (e.target === this) closeHistory();
-});
-document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeHistory(); });
-</script>
 
 <script>
 const DATA2026 = [
@@ -681,12 +540,7 @@ function selectQuarter(prefix, id){
 requestAnimationFrame(() => selectQuarter(PREFIX, '1.1'));
 </script>
 
-
 <script>
-/* Lapor tinggi konten ke halaman induk (Joomla) supaya iframe bisa
-   otomatis menyesuaikan tinggi, alih-alih pakai angka tetap.
-   Hanya kirim pesan kalau tingginya BENAR-BENAR berubah, supaya
-   tidak ada loop naik terus-menerus. */
 (function(){
   var lastSent = 0;
   function reportHeight(){
