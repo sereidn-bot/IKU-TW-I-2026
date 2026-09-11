@@ -26,7 +26,7 @@ html, body {
   font-family: 'Outfit', sans-serif;
   background: var(--gray-1);
   color: var(--text);
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   margin: 0; padding: 0;
   display: flex;
@@ -64,7 +64,7 @@ html, body {
 }
 .view-tab:hover { background: var(--green-light); color: var(--green-dark); }
 .view-tab.active { color: var(--green-dark); border-bottom-color: var(--green-dark); background: var(--green-light); }
-.view { display: none; flex: 1; min-height: 0; overflow: hidden; flex-direction: column; }
+.view { display: none; flex-direction: column; }
 .view.active { display: flex; }
 .sasaran-label {
   font-size: 9.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px;
@@ -161,15 +161,12 @@ html, body {
 }
 .layout {
   display: flex; flex: 1;
-  min-height: 0;
-  overflow: hidden;
 }
 .sidebar {
   width: 180px; flex-shrink: 0;
   background: var(--gray-0);
   border-right: 1px solid var(--gray-2);
   padding: 18px 8px;
-  overflow-y: auto;
 }
 .sidebar-label {
   font-size: 10px; font-weight: 700;
@@ -202,7 +199,6 @@ html, body {
 .dot-no { background: #ef4444; }
 .main {
   flex: 1; padding: 22px 24px;
-  overflow-y: auto;
   display: flex; flex-direction: column; gap: 16px;
 }
 .panel { display: none; flex-direction: column; gap: 16px; animation: fadeUp .22s ease; }
@@ -283,8 +279,7 @@ td { padding: 10px 14px; font-size: 13px; }
   .mobile-select-wrap { display: block; }
   .topbar-sub { display: none; }
   .topbar-name { font-size: 12px; }
-  .layout { overflow-y: auto; }
-  .main { padding: 14px 12px; overflow-y: visible; flex: none; }
+  .main { padding: 14px 12px; }
   .ph { flex-direction: column; gap: 10px; }
   .ph-title { font-size: 18px; }
   .badge { align-self: flex-start; }
@@ -687,5 +682,24 @@ function selectQuarter(prefix, id){
 requestAnimationFrame(() => selectQuarter(PREFIX, '1.1'));
 </script>
 
+
+<script>
+/* Lapor tinggi konten ke halaman induk (Joomla) supaya iframe bisa
+   otomatis menyesuaikan tinggi, alih-alih pakai angka tetap. */
+(function(){
+  function reportHeight(){
+    var h = document.documentElement.scrollHeight;
+    window.parent.postMessage({ source: 'iku-dashboard', height: h }, '*');
+  }
+  if (window.ResizeObserver) {
+    new ResizeObserver(reportHeight).observe(document.body);
+  } else {
+    window.addEventListener('resize', reportHeight);
+    setInterval(reportHeight, 800);
+  }
+  window.addEventListener('load', reportHeight);
+  setTimeout(reportHeight, 300);
+})();
+</script>
 </body>
 </html>
