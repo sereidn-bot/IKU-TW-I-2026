@@ -26,7 +26,6 @@ html, body {
   font-family: 'Outfit', sans-serif;
   background: var(--gray-1);
   color: var(--text);
-  min-height: 100vh;
   width: 100%;
   margin: 0; padding: 0;
   display: flex;
@@ -685,10 +684,15 @@ requestAnimationFrame(() => selectQuarter(PREFIX, '1.1'));
 
 <script>
 /* Lapor tinggi konten ke halaman induk (Joomla) supaya iframe bisa
-   otomatis menyesuaikan tinggi, alih-alih pakai angka tetap. */
+   otomatis menyesuaikan tinggi, alih-alih pakai angka tetap.
+   Hanya kirim pesan kalau tingginya BENAR-BENAR berubah, supaya
+   tidak ada loop naik terus-menerus. */
 (function(){
+  var lastSent = 0;
   function reportHeight(){
     var h = document.documentElement.scrollHeight;
+    if (Math.abs(h - lastSent) < 2) return;
+    lastSent = h;
     window.parent.postMessage({ source: 'iku-dashboard', height: h }, '*');
   }
   if (window.ResizeObserver) {
